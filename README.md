@@ -1,4 +1,4 @@
-# Saturno - Web App | Laboratorio de Computación 3
+# Saturno - Front-end | Laboratorio de Computación 3
 
 Trabajo práctico integrador entre las materias Laboratorio de computación 3 y Programación 3 de la carrera Tecnicatura Universitaria en Programación de la Universidad Tecnológia de Rosario. El trabajo consiste en la creación de una App con front-end realizado con ReactJs y el back-end con C#.
 
