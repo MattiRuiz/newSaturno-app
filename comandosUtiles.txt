@@ -1,8 +1,0 @@
-FIX NPM VULNERABILTYS:  
-
-
-1) $ npm audit fix --force ---> El comando audit envía una descripción de las dependencias configuradas en el proyecto 
-				     al registro predeterminado y solicita un informe de vulnerabilidades conocidas
--------------------------------------------------------------------------------------------------------------------------------------
-
-2) $ install npm@latest -g ---> Atualiza npm a la ultima version " @latest "
