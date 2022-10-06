@@ -5,7 +5,7 @@ const baseUrl = process.env.REACT_APP_BASE_URL;
 export async function getClient(){
     try{
         const response = await axios({
-            url: `${baseUrl}/client/list`,
+            url: `${baseUrl}/cliente/list`,
             method: 'GET',
         })
         

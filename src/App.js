@@ -4,6 +4,8 @@ import { Button } from 'reactstrap';
 
 import "./App.css"
 
+// 1) export NODE_OPTIONS=--openssl-legacy-provider 2) npm start 
+
 function App() {
   return (
     <div className="App">
