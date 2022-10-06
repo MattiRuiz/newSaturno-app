@@ -1,20 +1,29 @@
 import React from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Professional from './Components/Professional'
-import Client from './Components/Client'
+import { Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Button } from 'reactstrap';
+
 
 import './App.css';
+import ClientList from './Components/ClientList';
 
 function App() {
   return (
     <div className="App">
 
-    <BrowserRouter>
-    <Routes>
-      <Route path='/professional' element={<Professional></Professional>}></Route>
-      <Route path='/client' element={<Client></Client>}></Route>
-    </Routes>
-    </BrowserRouter>
+      <p>asd</p>
+      <h2>asdasd
+      </h2>
+      <Link to="/professional">
+        <Button color='danger' type="button">
+          Professional
+        </Button>
+      </Link>
+      <Link to="/cliente">
+        <button type="button">
+          cliente
+        </button>
+      </Link>
     </div>
   );
 }
