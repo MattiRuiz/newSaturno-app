@@ -1,12 +1,10 @@
-import React from 'react';
-import Home from './Components/Home/Home';
+import React from "react";
 //import { Link } from "react-router-dom";
 //import { Button } from 'reactstrap';
 
-import "./App.css"
-import NavBar from './Components/NavBar/NavBar';
+import "./App.css";
 
-// 1) export NODE_OPTIONS=--openssl-legacy-provider 2) npm start 
+// 1) export NODE_OPTIONS=--openssl-legacy-provider 2) npm start
 
 function App() {
   return (

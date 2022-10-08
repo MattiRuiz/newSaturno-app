@@ -1,13 +1,113 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+Body {
+  font-family: "Roboto", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.buttonCarrusel {
+  font-size: 60px;
+  border: transparent;
+  background: transparent;
+  color: white;
+  position: absolute;
+  right: 10px;
+}
+
+.buttonCarrusel:hover {
+  color: #ff5e5b;
+}
+
+.imagenCarrusel {
+  background-color: #55dac3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.img {
+  width: 100%;
+}
+
+.mainBackground {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #f2f2f2;
+}
+
+.mainContainer {
+  background-color: #fff;
+  width: 80%;
+  height: 500px;
+  padding-top: 20px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* MODIFICACIONES AL BOOTSTRAP */
+
+.btn-primary {
+  background-color: #ff5e5b;
+  color: white;
+  border-radius: 15px;
+  border: none;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 8px 20px;
+}
+
+.btn-primary:hover {
+  background-color: #ff423e;
+}
+
+.container-fluid {
+  --bs-gutter-x: 0;
+}
+
+.index1 {
+  z-index: 1;
+}
+
+.container {
+  background-color: #fff;
 }
