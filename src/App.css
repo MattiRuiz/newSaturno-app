@@ -1,10 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-*{
-  font-family: 'Roboto';
-}
 .App {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 .App-logo {
@@ -31,6 +29,54 @@
 
 .App-link {
   color: #61dafb;
+}
+.logoApp {
+  width: 190px;
+}
+
+.buttonCarrusel {
+  font-size: 60px;
+  border: transparent;
+  background: transparent;
+  color: white;
+  position: absolute;
+  right: 10px;
+}
+
+.buttonCarrusel:hover {
+  color: #FF5E5B;
+
+}
+
+.imagenCarrusel {
+  background-color: #55DAC3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.img{
+  width: 100%;
+}
+
+.mainBackground {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #f2f2f2;
+} 
+
+.mainContainer {
+  background-color: #fff;
+  width: 80%;
+  height: 500px;
 }
 
 @keyframes App-logo-spin {

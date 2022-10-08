@@ -1,15 +1,17 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import { Button } from 'reactstrap';
+import Home from './Components/Home/Home';
+//import { Link } from "react-router-dom";
+//import { Button } from 'reactstrap';
 
 import "./App.css"
+import NavBar from './Components/NavBar/NavBar';
 
 // 1) export NODE_OPTIONS=--openssl-legacy-provider 2) npm start 
 
 function App() {
   return (
     <div className="App">
-      <h1>Endpoints</h1>
+      {/* <h1>Endpoints</h1>
       <Link to="/professional">
         <Button color='danger' type="button">
           Professional
@@ -19,7 +21,7 @@ function App() {
         <button type="button">
           cliente
         </button>
-      </Link>
+      </Link> */}
     </div>
   );
 }

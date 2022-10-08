@@ -14,7 +14,7 @@ const ProCardItem = ({ data }) => {
                     data.map((item) => (
                        
                         <Card className="CardItem" key={ item.Id } style={{ width: '18rem' }}>
-                            <CardHeader><img alt="Card" width='100%' src="https://picsum.photos/300/200" /></CardHeader>
+                            <CardHeader><img className="imgCard" alt="Card" width='100%' src="https://picsum.photos/300/200" /></CardHeader>
                             
                             <CardBody style={{ textAlign: "center" }}>
                                 <CardTitle tag="h2"> {item.nombre} </CardTitle>
