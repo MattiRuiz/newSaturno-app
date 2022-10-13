@@ -11,6 +11,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Footer from "./Components/Footer/Footer";
 import NavBar from "./Components/NavBar/NavBar";
+import Login from "./Components/Login/Login";
+import SignUp from "./SignUp/SignUp";
 
 import Container from "react-bootstrap/Container";
 
@@ -56,8 +58,14 @@ root.render(
         path="/login"
         element={
           <Container className="text-center py-5">
-            <p>Esta es la pagina de Login</p>
+            <Login/>
           </Container>
+        }
+      />
+      <Route
+        path="/signup"
+        element={
+          <SignUp/>
         }
       />
 

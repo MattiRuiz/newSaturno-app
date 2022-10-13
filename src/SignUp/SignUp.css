@@ -1,0 +1,23 @@
+.signUpForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+
+.signUpForm input, select {
+    width: 270px;
+    border-radius: 21px;
+    padding: 5px;
+}
+
+.buttonForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.buttonForm button {
+    margin: 5px;
+}
+
