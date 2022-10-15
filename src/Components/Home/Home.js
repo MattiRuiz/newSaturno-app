@@ -2,7 +2,7 @@ import React from "react";
 import Carrusel from "./Carrusel/Carrusel";
 
 import Container from "react-bootstrap/Container";
-import CarruselBs from "./CarruselBs/CarruselBs";
+//import CarruselBs from "./CarruselBs/CarruselBs";
 
 const Home = () => {
   return (
