@@ -1,12 +1,13 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
-import { Button } from "reactstrap";
+
 import { FaRegUser } from "react-icons/fa";
 
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Container } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 
 import "./NavBar.css";
 
@@ -40,7 +41,7 @@ const NavBar = () => {
           <Nav.Link className="navBar-options mt-3 mt-lg-0">
             <Link to={"/sobrenosotros"}>Sobre nosotros</Link>
           </Nav.Link>
-          <Nav.Link className="my-3 mt-lg-0">
+          <Nav.Link className="my-3 my-lg-0">
             <Link to={"/login"}>
               <Button color="primary">
                 <FaRegUser /> Login
