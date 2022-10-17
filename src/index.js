@@ -58,16 +58,11 @@ root.render(
         path="/login"
         element={
           <Container className="text-center py-5">
-            <Login/>
+            <Login />
           </Container>
         }
       />
-      <Route
-        path="/signup"
-        element={
-          <SignUp/>
-        }
-      />
+      <Route path="/signup" element={<SignUp />} />
 
       {/* <Route path='/professional' element={<Professional></Professional>}></Route>
       <Route path='/cliente' element={<Client></Client>}></Route> */}
