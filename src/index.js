@@ -43,7 +43,7 @@ root.render(
         path="/contacto"
         element={
           <Container className="text-center py-5">
-            <Contact/>
+            <p>Esta es la pagina de Contacto</p>
           </Container>
         }
       />
