@@ -13,6 +13,7 @@ import Footer from "./Components/Footer/Footer";
 import NavBar from "./Components/NavBar/NavBar";
 import Login from "./Components/Login/Login";
 import SignUp from "./SignUp/SignUp";
+import Search from "./Components/Search/Search";
 
 import Container from "react-bootstrap/Container";
 
@@ -26,7 +27,7 @@ root.render(
         path="/buscar"
         element={
           <Container className="text-center py-5">
-            <p>Esta es la pagina de Buscar</p>
+            <Search />
           </Container>
         }
       />
