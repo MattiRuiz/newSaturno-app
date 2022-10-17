@@ -51,6 +51,7 @@ const SignUp = () => {
     }
 
     const saveBaseUsuarioHandler = () => {
+        
         const usuarioDatos = {
             userName: userName,
             nameLastname: nameLastname,
@@ -61,7 +62,7 @@ const SignUp = () => {
         }
         setUserData([usuarioDatos, ...baseUsuarios])
         window.localStorage.setItem('baseUsuario', JSON.stringify(userData))
-        console.log(userData);
+        console.log(userData);   
     }
 
     const cleanInputs = () => {

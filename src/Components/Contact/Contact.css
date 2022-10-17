@@ -1,0 +1,42 @@
+.contactPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contactPage h2 {
+    text-align: initial;
+    width: 350px;
+    border-bottom: 1px solid #DCDBDB;
+    padding-bottom: 20px;
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.contactForm input {
+    border-radius: 20px;
+    padding: 10px;
+    height: 35px;
+}
+
+.contactForm label {
+    text-align: initial;
+}
+
+.contactForm textarea {
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.buttonContact {
+    display: flex;
+}
+
+.buttonContact button {
+    margin: 10px;
+    border-radius: 15px;
+}

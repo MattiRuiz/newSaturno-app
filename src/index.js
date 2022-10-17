@@ -15,6 +15,7 @@ import Login from "./Components/Login/Login";
 import SignUp from "./SignUp/SignUp";
 
 import Container from "react-bootstrap/Container";
+import Contact from "./Components/Contact/Contact";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -42,7 +43,7 @@ root.render(
         path="/contacto"
         element={
           <Container className="text-center py-5">
-            <p>Esta es la pagina de Contacto</p>
+            <Contact/>
           </Container>
         }
       />
@@ -68,7 +69,6 @@ root.render(
           <SignUp/>
         }
       />
-
       {/* <Route path='/professional' element={<Professional></Professional>}></Route>
       <Route path='/cliente' element={<Client></Client>}></Route> */}
     </Routes>
