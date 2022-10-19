@@ -19,7 +19,7 @@ const Content1 = () => {
           <h1 className="text-white font-weight-bold">
             Buscá los mejores negocios en tu zona y pedí tu turno
           </h1>
-          <Link to={"/signup"}>
+          <Link to={"/buscar"}>
             <Button color="primary">
               <FiSearch /> Buscar
             </Button>
