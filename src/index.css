@@ -84,6 +84,10 @@ body {
   }
 }
 
+a.colorLink {
+  color: #ff5e5b !important;
+}
+
 /* MODIFICACIONES AL BOOTSTRAP */
 
 .btn-primary {
@@ -114,4 +118,34 @@ body {
 
 .h5 {
   font-size: 1.1rem;
+}
+
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  background-color: #ff423e;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+label {
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: #282c34;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #282c34;
+}
+
+.form-control {
+  border-radius: 12px;
 }
