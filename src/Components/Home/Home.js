@@ -1,7 +1,7 @@
 import React from "react";
 
 import CarruselBs from "./CarruselBs/CarruselBs";
-import CardsProfesionales from "./CardsProfesionales/CardsProfesionales";
+import CardsProfesionalesF from "./CardsProfesionales/CardsProfesionalesF";
 
 import Container from "react-bootstrap/Container";
 
@@ -13,11 +13,11 @@ const Home = () => {
       </Container>
       <Container className="pb-5">
         <h5 className="mb-4">Encontrá los mejores lugares en Rosario</h5>
-        <CardsProfesionales />
+        <CardsProfesionalesF />
         <h5 className="mb-4 mt-5">
           Locales con turnos disponibles esta semana
         </h5>
-        <CardsProfesionales />
+        <CardsProfesionalesF />
       </Container>
     </>
   );
