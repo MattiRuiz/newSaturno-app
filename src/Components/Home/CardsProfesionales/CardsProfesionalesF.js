@@ -12,14 +12,12 @@ const CardsProfesionales = () => {
   useEffect(() => {
     async function loadProfessional() {
       const response = await getProfessionals();
-      try {
-        console.log("Entra a la data");
+      if (response.status === "200") {
         setProfessional(response.data);
-      } catch (err) {
-        console.log(err);
+        console.log(response.data);
       }
     }
-    loadProfessional(); //Poner un try catch
+    loadProfessional();
   }, []);
 
   return (

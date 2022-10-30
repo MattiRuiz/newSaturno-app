@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Container from "react-bootstrap/Container";
 
 //import Professional from './Components/Professional';
 //import Client from './Components/Client';
@@ -13,11 +14,12 @@ import Footer from "./Components/Footer/Footer";
 import NavBar from "./Components/NavBar/NavBar";
 import Login from "./Components/Login/Login";
 import Search from "./Components/Search/Search";
-import Container from "react-bootstrap/Container";
 import Contact from "./Components/Contact/Contact";
 import AboutUs from "./Components/AboutUs/AboutUs";
 import SignUp from "./Components/SignUp/SignUp";
-
+import Profesionales from "./Components/Profesionales/Profesionales";
+import PerfilProfesional from "./Components/PerfilProfesional/PerfilProfesional";
+import PerfilUsuario from "./Components/PerfilUsuario/PerfilUsuario";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -37,7 +39,7 @@ root.render(
         path="/profesionales"
         element={
           <Container className="text-center py-5">
-            <p>Esta es la pagina de Profesionales</p>
+            <Profesionales />
           </Container>
         }
       />
@@ -45,7 +47,7 @@ root.render(
         path="/contacto"
         element={
           <Container className="text-center py-5">
-            <Contact/>
+            <Contact />
           </Container>
         }
       />
@@ -53,7 +55,7 @@ root.render(
         path="/sobrenosotros"
         element={
           <Container className="text-center py-5">
-            <AboutUs/>
+            <AboutUs />
           </Container>
         }
       />
@@ -65,9 +67,23 @@ root.render(
           </Container>
         }
       />
-      <Route 
-        path="/signup" 
-        element= {<SignUp/>} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route
+        path="/perfilProfesional"
+        element={
+          <Container className="text-center py-5">
+            <PerfilProfesional />
+          </Container>
+        }
+      />
+      <Route
+        path="/perfilUsuario"
+        element={
+          <Container className="text-center py-5">
+            <PerfilUsuario />
+          </Container>
+        }
+      />
 
       {/* <Route path='/professional' element={<Professional></Professional>}></Route>
       <Route path='/cliente' element={<Client></Client>}></Route> */}

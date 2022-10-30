@@ -104,6 +104,15 @@ a.colorLink {
   background-color: #ff423e;
 }
 
+.btn-secondary {
+  color: white;
+  border-radius: 15px;
+  border: none;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 8px 20px;
+}
+
 .container-fluid {
   --bs-gutter-x: 0;
 }
@@ -148,4 +157,8 @@ a {
 
 .form-control {
   border-radius: 12px;
+}
+
+.fondo-jade {
+  background-color: #55dac3;
 }

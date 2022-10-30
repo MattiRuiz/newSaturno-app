@@ -82,9 +82,9 @@ const Login = () => {
           </Form>
           <p className="mb-1">
             <b>¿Olvidaste tu contraseña?</b> Has click{" "}
-            <a href="#" className="colorLink">
+            <Link to={"/perfilUsuario"} className="colorLink">
               acá
-            </a>
+            </Link>
           </p>
           <p>
             <b>¿No tenes cuenta?</b> Has click{" "}
