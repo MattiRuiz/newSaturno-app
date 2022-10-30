@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import { Link } from "react-router-dom";
 import CardProfesional from "../Home/CardsProfesionales/CardProfesional";

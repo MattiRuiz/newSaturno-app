@@ -8,6 +8,7 @@ import Accordion from "react-bootstrap/Accordion";
 import { FiClock } from "react-icons/fi";
 import { BiMap } from "react-icons/bi";
 import { BsCalendarEvent } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const PerfilProfesional = () => {
   const fotoPerfil = require("./perfil.jpg");
@@ -74,9 +75,7 @@ const PerfilProfesional = () => {
                 </Accordion>
                 <p className="mt-4">
                   <strong>¿Quieres denunciar este profesional?</strong> Entra{" "}
-                  <a href="#" className="colorLink">
-                    aquí
-                  </a>
+                  <Link className="colorLink">aquí</Link>
                 </p>
               </Col>
             </Row>

@@ -20,6 +20,8 @@ import SignUp from "./Components/SignUp/SignUp";
 import Profesionales from "./Components/Profesionales/Profesionales";
 import PerfilProfesional from "./Components/PerfilProfesional/PerfilProfesional";
 import PerfilUsuario from "./Components/PerfilUsuario/PerfilUsuario";
+import UserConfiguration from "./Components/UserConfiguration/UserConfiguration";
+import RecoverPassword from "./Components/RecoverPassword/RecoverPassword";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -67,7 +69,14 @@ root.render(
           </Container>
         }
       />
-      <Route path="/signup" element={<SignUp />} />
+      <Route
+        path="/signup"
+        element={
+          <Container className="text-center py-5">
+            <SignUp />
+          </Container>
+        }
+      />
       <Route
         path="/perfilProfesional"
         element={
@@ -81,6 +90,22 @@ root.render(
         element={
           <Container className="text-center py-5">
             <PerfilUsuario />
+          </Container>
+        }
+      />
+      <Route
+        path="/configuracionUsuario"
+        element={
+          <Container className="text-center py-5">
+            <UserConfiguration />
+          </Container>
+        }
+      />
+      <Route
+        path="/recoverPassword"
+        element={
+          <Container className="text-center py-5">
+            <RecoverPassword />
           </Container>
         }
       />

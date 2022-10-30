@@ -82,7 +82,7 @@ const Login = () => {
           </Form>
           <p className="mb-1">
             <b>¿Olvidaste tu contraseña?</b> Has click{" "}
-            <Link to={"/perfilUsuario"} className="colorLink">
+            <Link to={"/recoverPassword"} className="colorLink">
               acá
             </Link>
           </p>
