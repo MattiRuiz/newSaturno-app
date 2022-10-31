@@ -20,4 +20,15 @@
 .buttonForm button {
     margin: 5px;
 }
+.errors {
+    color: red;
+}
+
+.errorsValidation {
+    color: red;
+    text-align: center;
+    font-style: italic;
+    font-size: larger;
+}
+ 
 

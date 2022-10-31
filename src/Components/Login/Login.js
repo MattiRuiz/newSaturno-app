@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import './Login.css'
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
@@ -12,14 +12,31 @@ const Login = () => {
   const navigate = useNavigate(); // Allows us to redirect
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState("");
 
-  const userNameHandler = (e) => {
-    setUserName(e.target.value);
-  };
-
-  const passwordHandler = (e) => {
-    setPassword(e.target.value);
-  };
+  const userNameValidation = () => {
+      if (userName === ''){
+        setErrors({...errors, 
+        userName: 'Campo obligatorio.'});
+    }else if (userName.length < 4 || userName.length > 10) {
+        setErrors({...errors, 
+        userName: 'Debe contener entre 4 y 10 caracteres.'});
+    } else {
+        let _errors = {...errors};
+        delete _errors.userName;
+        setErrors(_errors);}}
+  
+  const passwordValidation = () => {
+    if (password === ''){
+        setErrors({...errors, 
+        password: 'Campo obligatorio.'})
+    } else if (password.length < 5 || password.length > 10){
+        setErrors({...errors, 
+        password: 'Debe contener entre 5 y 10 caracteres.'})
+    } else {
+        let _errors = {...errors};
+        delete _errors.password;
+        setErrors(_errors);}}
 
   const loginHandler = () => {
     login(userName, password)
@@ -64,8 +81,11 @@ const Login = () => {
                 type="text"
                 id="userName"
                 onChange={(event) => setUserName(event.target.value)}
+                onBlur={userNameValidation}
                 value={userName}
               />
+              {errors.userName &&
+                <div className="errors">{errors.userName}</div>}
             </Form.Group>
             <Form.Group className="my-4">
               <Form.Label>Contraseña:</Form.Label>
@@ -73,8 +93,11 @@ const Login = () => {
                 type="password"
                 id="password"
                 onChange={(event) => setPassword(event.target.value)}
+                onBlur={passwordValidation}
                 value={password}
               />
+              {errors.password &&
+                <div className="errors">{errors.password}</div>}
             </Form.Group>
             <Button onClick={loginHandler} color="primary" className="mb-4">
               Entrar
