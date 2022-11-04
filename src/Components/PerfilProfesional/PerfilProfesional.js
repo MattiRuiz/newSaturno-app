@@ -1,10 +1,16 @@
 import React from "react";
+import { useState } from "react";
 
 import "./PerfilProfesional.css";
 
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import Accordion from "react-bootstrap/Accordion";
+import Modal from "react-bootstrap/Modal";
+
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/dist/style.css";
+
 import { FiClock } from "react-icons/fi";
 import { BiMap } from "react-icons/bi";
 import { BsCalendarEvent } from "react-icons/bs";
@@ -12,6 +18,14 @@ import { Link } from "react-router-dom";
 
 const PerfilProfesional = () => {
   const fotoPerfil = require("./perfil.jpg");
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [selected, setSelected] = useState(Date());
+
+  const current = new Date();
+
   return (
     <>
       <Container>
@@ -29,9 +43,30 @@ const PerfilProfesional = () => {
                 <p>
                   <FiClock /> <strong>Lun a Vie</strong> - 9:00 a 18:00
                 </p>
-                <Button className="mt-4">
+                <Button className="mt-4" onClick={handleShow}>
                   <BsCalendarEvent /> Pedir turno
                 </Button>
+                <Modal show={show} onHide={handleClose}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Elja su turno</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <DayPicker
+                      mode="single"
+                      selected={selected}
+                      onSelect={setSelected}
+                      fromMonth={current}
+                    />
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                      Cerrar
+                    </Button>
+                    <Button variant="primary" onClick={handleClose}>
+                      Guardar turno
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
               </Col>
               <Col xs={8} className="text-start mt-5">
                 <h1 className="border-bottom pb-4 mb-3">Cápita</h1>
