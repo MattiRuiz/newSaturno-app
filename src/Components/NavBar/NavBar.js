@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-
 import { Link } from "react-router-dom";
-
 import { FaRegUser } from "react-icons/fa";
-
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Container } from "react-bootstrap";
@@ -11,16 +8,17 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Dropdown from "react-bootstrap/Dropdown";
 import Modal from "react-bootstrap/Modal";
-
 import "./NavBar.css";
+import ButtonTheme from "../ButtonTheme/ButtonTheme";
 
 const NavBar = () => {
   //Modal de cerrar sesión
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  
   return (
+    <div>
     <Navbar bg="white" expand="lg" className="navBar index1">
       <Container>
         <Navbar.Brand>
@@ -37,6 +35,7 @@ const NavBar = () => {
           id="basic-navbar-nav"
           className="justify-content-end text-center"
         >
+            <ButtonTheme/>
           <Nav.Link className="navBar-options mt-3 mt-lg-0">
             <Link to={"/buscar"}>Buscar</Link>
           </Nav.Link>
@@ -50,11 +49,6 @@ const NavBar = () => {
             <Link to={"/sobrenosotros"}>Sobre nosotros</Link>
           </Nav.Link>
           <Nav.Link className="my-3 my-lg-0">
-            {/* <Link to={"/login"}>
-              <Button color="primary">
-                <FaRegUser /> Login
-              </Button>
-            </Link> */}
             <Dropdown as={ButtonGroup}>
               <Button variant="primary">
                 <Link to={"/login"} className="text-white">
@@ -92,6 +86,7 @@ const NavBar = () => {
         </Modal>
       </Container>
     </Navbar>
+    </div>
   );
 };
 

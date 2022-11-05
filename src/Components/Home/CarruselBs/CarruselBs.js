@@ -1,11 +1,13 @@
 import React from "react";
-
 import Carousel from "react-bootstrap/Carousel";
 import Content1 from "./Content1/Content1";
 import Content2 from "./Content2/Content2";
 
+
 const CarruselBs = () => {
+ 
   return (
+    <div>
     <Carousel className="mb-3">
       <Carousel.Item>
         <Content1 />
@@ -14,6 +16,7 @@ const CarruselBs = () => {
         <Content2 />
       </Carousel.Item>
     </Carousel>
+    </div>
   );
 };
 

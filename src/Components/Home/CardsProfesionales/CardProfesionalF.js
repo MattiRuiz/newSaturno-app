@@ -7,7 +7,6 @@ import { FiClock } from "react-icons/fi";
 import { BiMap } from "react-icons/bi";
 
 const CardProfesional = ({data}) => {
-  const cardImg = require("./smart-fit.jpg");
   return (
     <>
       <Card key={data.Id}>
