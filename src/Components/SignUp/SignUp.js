@@ -6,14 +6,9 @@ import Form from "react-bootstrap/Form";
 
 const baseUsuarios = [
   {
-    userName: "",
-    nameLastname: "sofia corva",
-    email: "sofia@gmail.com",
-    phoneNumber: "123456",
-    ubication: "Rosario",
-    password: "1234",
   },
 ];
+
 
 const SignUp = () => {
   const [userName, setUserName] = useState(userName);
@@ -23,8 +18,16 @@ const SignUp = () => {
   const [ubication, setUbication] = useState(ubication);
   const [password, setPassword] = useState(password);
   const [validPassword, setValidPassword] = useState(validPassword);
-  const [userData, setUserData] = useState({});
-
+  const [userData, setUserData] = useState(usuarioDatos);
+  
+  const usuarioDatos = {
+    userName: userName,
+    nameLastname: nameLastname,
+    email: email,
+    phoneNumber: phoneNumber,
+    ubication: ubication,
+    password: password,
+  };
   const userNameHandler = (e) => {
     setUserName(e.target.value);
   };
@@ -54,17 +57,12 @@ const SignUp = () => {
   };
 
   const saveBaseUsuarioHandler = () => {
-    const usuarioDatos = {
-      userName: userName,
-      nameLastname: nameLastname,
-      email: email,
-      phoneNumber: phoneNumber,
-      ubication: ubication,
-      password: password,
-    };
+
     setUserData([usuarioDatos, ...baseUsuarios]);
     window.localStorage.setItem("baseUsuario", JSON.stringify(userData));
     console.log(userData);
+    console.log(usuarioDatos);
+    
   };
 
   const cleanInputs = () => {
