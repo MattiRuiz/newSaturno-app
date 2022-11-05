@@ -22,6 +22,7 @@ import PerfilProfesional from "./Components/PerfilProfesional/PerfilProfesional"
 import PerfilUsuario from "./Components/PerfilUsuario/PerfilUsuario";
 import UserConfiguration from "./Components/UserConfiguration/UserConfiguration";
 import RecoverPassword from "./Components/RecoverPassword/RecoverPassword";
+import Admin from "./Components/Admin/Admin";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -106,6 +107,14 @@ root.render(
         element={
           <Container className="text-center py-5">
             <RecoverPassword />
+          </Container>
+        }
+      />
+      <Route
+        path="/Admin"
+        element={
+          <Container className="text-center py-5">
+            <Admin />
           </Container>
         }
       />

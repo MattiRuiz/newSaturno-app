@@ -7,21 +7,6 @@ import { Image } from "react-bootstrap";
 const AboutUs = () => {
   const imgAboutUs = require("./saturnoApp.png");
   return (
-    // <div className='aboutUsDiv'>
-    //   <h2>Sobre nosotros</h2>
-    //   <div className='div1'>
-    //       <h5>Quienes somos:</h5>
-    //       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    //   </div>
-    //   <img
-    //       className="contactImg"
-    //       alt="motivation"
-    //       src={require("./saturnoApp.png")}/>
-    //   <div className='div2'>
-    //     <h5>Misión, visión y objetivos:</h5>
-    //     <p>Etiam ac sollicitudin nisi. Etiam ante erat, consequat nec volutpat quis, eleifend at erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu sollicitudin ante. Nunc feugiat id diam a auctor. Etiam ac sollicitudin nisi. Etiam ante erat, consequat nec volutpat quis, eleifend at erat.</p>
-    //   </div>
-    // </div>
     <Container className="py-3 px-0">
       <Row className="justify-content-center text-start">
         <Col xs={12} lg={10} xl={7} className="border-bottom pb-4">
@@ -30,24 +15,37 @@ const AboutUs = () => {
         <Col xs={12} lg={10} xl={7} className="my-4">
           <h5>Quienes somos</h5>
           <p>
-            El contenido de esta página es bastante dudoso, así que aca va un
-            lorem ipsum. Ut commodo gravida neque, vitae pharetra ligula luctus
-            dictum. Aliquam elit mauris, interdum ut urna vel, aliquam tristique
-            odio. Etiam ac sollicitudin nisi. Etiam ante erat, consequat nec
-            volutpat quis, eleifend at erat.
+            <strong>Grupo 4 </strong>es una empresa dispuesta a revolucionar el
+            mundo de la informática. Sistemas, Redes, Capacitación y
+            Asesoramiento generalizado sobre las distintas tecnologías de última
+            generación.
+          </p>
+          <p>
+            <em>
+              Desarrollo de sitios y aplicaciones web, aplicaciones
+              empresariales, sistemas administrativos, tanto para ambientes web
+              como para Windows.
+            </em>
           </p>
         </Col>
         <Col xs={12} className="px-0">
           <Image src={imgAboutUs} fluid />
         </Col>
         <Col xs={12} lg={10} xl={7} className="mt-5">
-          <h5>Misión, visión y objetivos:</h5>
           <p>
-            Etiam ac sollicitudin nisi. Etiam ante erat, consequat nec volutpat
-            quis, eleifend at erat. Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Donec eu sollicitudin ante. Nunc feugiat id diam a
-            auctor. Etiam ac sollicitudin nisi. Etiam ante erat, consequat nec
-            volutpat quis, eleifend at erat.
+            Nuestra Experiencia nos demuestra que ninguna empresa se maneja del
+            mismo modo que otra de rubro similar, por lo tanto nuestro software
+            es adaptable a las necesidades del Cliente. <br />{" "}
+          </p>
+          <p>
+            Nuestros servicios están orientados a que su empresa logre optimizar
+            al máximo los recursos, logrando aprovechar los tiempos para ser{" "}
+            <strong>mas competitivos.</strong>
+          </p>
+          <p>
+            Utilizando herramientas como, por ejemplo: copias en internet,
+            permitiéndole utilizar los beneficios que esta tecnología de punta
+            permite alcanzar. Aguante facu capo boca.
           </p>
         </Col>
       </Row>

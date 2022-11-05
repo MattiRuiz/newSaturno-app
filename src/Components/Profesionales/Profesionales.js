@@ -98,7 +98,9 @@ const Profesionales = () => {
             </p>
           </Col>
           <Col xs={12}>
-            <Button color="primary">Crear cuenta profesional</Button>
+            <Link to={"/login"} className="colorLink">
+              <Button color="primary">Crear cuenta profesional</Button>
+            </Link>
           </Col>
         </Row>
         <Row className="mt-5">

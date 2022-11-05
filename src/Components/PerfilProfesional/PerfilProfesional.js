@@ -1,22 +1,45 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { IDGetProfesional } from "../../functions/professionalMethods";
 
 import "./PerfilProfesional.css";
 
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
-import Accordion from "react-bootstrap/Accordion";
+//import Accordion from "react-bootstrap/Accordion";
 import Modal from "react-bootstrap/Modal";
 
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
 import { FiClock } from "react-icons/fi";
-import { BiMap } from "react-icons/bi";
+import { BiMap, BiMobileAlt } from "react-icons/bi";
 import { BsCalendarEvent } from "react-icons/bs";
+
 import { Link } from "react-router-dom";
 
 const PerfilProfesional = () => {
+  const [professional, setProfessional] = useState([]);
+
+  useEffect(() => {
+    const IDProfesional = localStorage.getItem("prof");
+    console.log(IDProfesional);
+    async function loadProfessional() {
+      console.log("dentro del useEffect");
+      try {
+        const response = await IDGetProfesional(IDProfesional);
+        if (response.status === 200) {
+          const [destructuringProfessional] = response.data;
+          setProfessional(destructuringProfessional);
+          console.log(destructuringProfessional);
+        }
+      } catch (e) {
+        console.log("Catch: ", e);
+      }
+    }
+    loadProfessional();
+  }, []);
+
   const fotoPerfil = require("./perfil.jpg");
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -37,11 +60,15 @@ const PerfilProfesional = () => {
             <Row className="justify-content-center pt-3 pb-5">
               <Col xs={3}>
                 <Image src={fotoPerfil} roundedCircle fluid className="mb-3" />
-                <p className="mb-0">
-                  <BiMap /> <strong>Pasco 1333</strong> - Rosario
+                <p className="mb-1 ms-3 text-start">
+                  <BiMap /> <strong>{professional.direccion}</strong> -{" "}
+                  {professional.ubicacion}
                 </p>
-                <p>
-                  <FiClock /> <strong>Lun a Vie</strong> - 9:00 a 18:00
+                <p className="mb-1 ms-3 text-start">
+                  <FiClock /> {professional.horario}
+                </p>
+                <p className="mb-1 ms-3 text-start">
+                  <BiMobileAlt /> {professional.telefono}
                 </p>
                 <Button className="mt-4" onClick={handleShow}>
                   <BsCalendarEvent /> Pedir turno
@@ -69,13 +96,12 @@ const PerfilProfesional = () => {
                 </Modal>
               </Col>
               <Col xs={8} className="text-start mt-5">
-                <h1 className="border-bottom pb-4 mb-3">Cápita</h1>
-                <h5 className="mb-3 text-muted">Peluquería</h5>
-                <p>
-                  Esta es una breve descripción de la peluquería Cápita. No se
-                  que puede incluir, cosas como dirección, horario, turnos, etc.{" "}
-                </p>
-                <h5 className="mb-4">Descripción de los servicios</h5>
+                <h1 className="border-bottom pb-4 mb-3">
+                  {professional.nombre}
+                </h1>
+                <h5 className="mb-3 text-muted">{professional.profesion}</h5>
+                <p>{professional.descripcion}</p>
+                {/* <h5 className="mb-4">Descripción de los servicios</h5>
                 <Accordion>
                   <Accordion.Item eventKey="0">
                     <Accordion.Header>
@@ -107,7 +133,7 @@ const PerfilProfesional = () => {
                       aliqua. Ut enim ad minim veniam
                     </Accordion.Body>
                   </Accordion.Item>
-                </Accordion>
+                </Accordion> */}
                 <p className="mt-4">
                   <strong>¿Quieres denunciar este profesional?</strong> Entra{" "}
                   <Link className="colorLink">aquí</Link>

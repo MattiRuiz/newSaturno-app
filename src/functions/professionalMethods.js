@@ -14,3 +14,16 @@ export async function getProfessionals() {
     console.log(errors);
   }
 }
+
+export async function IDGetProfesional(id) {
+  try {
+    const response = await axios({
+      url: `${baseUrl}/professional/${id}`,
+      method: "GET",
+    });
+
+    return response;
+  } catch (errors) {
+    console.log(errors);
+  }
+}

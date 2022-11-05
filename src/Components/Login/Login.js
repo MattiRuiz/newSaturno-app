@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import './Login.css'
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
+import "./Login.css";
+
 import Button from "react-bootstrap/Button";
 import { Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
-import { login } from "../../functions/loginAuth";
+import { useNavigate, Link } from "react-router-dom";
+
+import { authClient } from "../../functions/clientMethods";
 
 const Login = () => {
   const navigate = useNavigate(); // Allows us to redirect
@@ -15,59 +17,51 @@ const Login = () => {
   const [errors, setErrors] = useState("");
 
   const userNameValidation = () => {
-      if (userName === ''){
-        setErrors({...errors, 
-        userName: 'Campo obligatorio.'});
-    }else if (userName.length < 4 || userName.length > 10) {
-        setErrors({...errors, 
-        userName: 'Debe contener entre 4 y 10 caracteres.'});
+    if (userName === "") {
+      setErrors({ ...errors, userName: "Campo obligatorio." });
+    } else if (userName.length < 4 || userName.length > 10) {
+      setErrors({
+        ...errors,
+        userName: "Debe contener entre 4 y 10 caracteres.",
+      });
     } else {
-        let _errors = {...errors};
-        delete _errors.userName;
-        setErrors(_errors);}}
-  
+      let _errors = { ...errors };
+      delete _errors.userName;
+      setErrors(_errors);
+    }
+  };
+
   const passwordValidation = () => {
-    if (password === ''){
-        setErrors({...errors, 
-        password: 'Campo obligatorio.'})
-    } else if (password.length < 5 || password.length > 10){
-        setErrors({...errors, 
-        password: 'Debe contener entre 5 y 10 caracteres.'})
+    if (password === "") {
+      setErrors({ ...errors, password: "Campo obligatorio." });
+    } else if (password.length < 5 || password.length > 10) {
+      setErrors({
+        ...errors,
+        password: "Debe contener entre 5 y 10 caracteres.",
+      });
     } else {
-        let _errors = {...errors};
-        delete _errors.password;
-        setErrors(_errors);}}
+      let _errors = { ...errors };
+      delete _errors.password;
+      setErrors(_errors);
+    }
+  };
 
   const loginHandler = () => {
-    login(userName, password)
-      .then(() => {
-        window.localStorage.setItem("current_user", JSON.stringify(userName)); // Saving the current session
-        navigate("/"); // Redirect
-        console.log("Successful login, user: " + userName);
-      })
-      .catch((err) => {
-        alert(err);
-      });
+    authClient(userName, password);
+    // .then(() => {
+    //   window.localStorage.setItem("current_user", JSON.stringify(userName)); // Saving the current session
+    //   navigate("/"); // Redirect
+    //   console.log("Successful login, user: " + userName);
+    // })
+    // .catch((err) => {
+    //   alert(err);
+    // });
 
     setUserName("");
     setPassword("");
   };
 
   return (
-    // <Container className="text-center py-5">
-    //    <h1 className='h1Login'>Iniciar sesión</h1>
-    //    <form className='inputLogin'>
-    //         <label>Nombre de usuario: </label>
-    //         <input id="userName" onChange={(event) => setUserName(event.target.value) } value={userName} type="text"></input>
-    //         <label>Contraseña: </label>
-    //         <input id="password" onChange={(event) => setPassword(event.target.value) } value ={password}type="password"></input>
-    //         <Button className='buttonLogin' onClick={loginHandler} color="primary">Entrar</Button>
-    //    </form>
-    //    <div className='helpLogin'>
-    //         <p>¿Olvidaste tu contraseña? Haz click <a href='#'>aquí.</a></p>
-    //         <p>¿No tenes cuenta? Has click <Link to={"/signup"}>acá</Link> para registrarte.</p>
-    //    </div>
-    // </Container>
     <Container className="py-3">
       <Row className="justify-content-center text-start">
         <Col xs={12} lg={10} xl={7} className="border-bottom pb-4">
@@ -84,8 +78,9 @@ const Login = () => {
                 onBlur={userNameValidation}
                 value={userName}
               />
-              {errors.userName &&
-                <div className="errors">{errors.userName}</div>}
+              {errors.userName && (
+                <div className="errors">{errors.userName}</div>
+              )}
             </Form.Group>
             <Form.Group className="my-4">
               <Form.Label>Contraseña:</Form.Label>
@@ -96,8 +91,9 @@ const Login = () => {
                 onBlur={passwordValidation}
                 value={password}
               />
-              {errors.password &&
-                <div className="errors">{errors.password}</div>}
+              {errors.password && (
+                <div className="errors">{errors.password}</div>
+              )}
             </Form.Group>
             <Button onClick={loginHandler} color="primary" className="mb-4">
               Entrar
