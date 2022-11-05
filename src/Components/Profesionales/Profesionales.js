@@ -7,9 +7,12 @@ import { BsPhone } from "react-icons/bs";
 import { BsWindow } from "react-icons/bs";
 import { BsShopWindow } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import ThemeContext from "../../Contexts/ThemeContext/ThemeContext";
 
 const Profesionales = () => {
   const logoSolo = require("./logo-solo.jpg");
+  const { theme, handleTheme } = useContext(ThemeContext);
   return (
     <>
       <Container className="px-0">
@@ -23,6 +26,7 @@ const Profesionales = () => {
             </p>
           </Col>
         </Row>
+	<div className={theme}>
         <Row className="fondo-jade justify-content-center justify-content-lg-around text-white pt-5 pb-4 mt-3">
           <Col xs={12} sm={10} md={7} lg={4} xl={3}>
             <BsPhone className="icon-display" />
@@ -40,6 +44,7 @@ const Profesionales = () => {
             <p>Tu perfil tendrá toda tu información y servicios</p>
           </Col>
         </Row>
+	</div>
         <Row className="justify-content-center mt-4">
           <Col xs={12} lg={8} className="border-bottom py-3">
             <p>
@@ -91,6 +96,7 @@ const Profesionales = () => {
             <p className="border py-3 rounded mb-2">Veterinarias</p>
           </Col>
         </Row>
+	<div className={theme}>
         <Row className="fondo-jade py-4 mt-4">
           <Col xs={12}>
             <p className="display-6 text-white mb-2">
@@ -103,6 +109,7 @@ const Profesionales = () => {
             </Link>
           </Col>
         </Row>
+	</div>
         <Row className="mt-5">
           <Col xs={12} className="text-center">
             <p className="mb-0">

@@ -9,18 +9,22 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
+import { useContext } from "react";
+import ThemeContext from "../../../../Contexts/ThemeContext/ThemeContext";
 
 const Content1 = () => {
   const empleada1 = require("./peluquera1.jpeg");
+  const { theme, handleTheme } = useContext(ThemeContext);
+
   return (
-    <>
+    <div className={theme}>
       <Row className="justify-content-center content2 py-4 align-items-center">
         <Col xs={10} md={4} className="my-3 my-lg-0 text-end">
           <h1 className="text-white font-weight-bold">
             Buscá los mejores negocios en tu zona y pedí tu turno
           </h1>
           <Link to={"/buscar"}>
-            <Button color="primary">
+            <Button className={theme} color="primary">
               <FiSearch /> Buscar
             </Button>
           </Link>
@@ -29,7 +33,7 @@ const Content1 = () => {
           <Image src={empleada1} fluid roundedCircle />
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 

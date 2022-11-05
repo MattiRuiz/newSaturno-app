@@ -32,7 +32,7 @@ const AboutUs = () => {
           </p>
         </Col>
         <Col xs={12} className="px-0">
-          <Image src={imgAboutUs} fluid />
+          <Image className={theme} src={imgAboutUs} fluid />
         </Col>
         <Col xs={12} lg={10} xl={7} className="mt-5">
           <p>
