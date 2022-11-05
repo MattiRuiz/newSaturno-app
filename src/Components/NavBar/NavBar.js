@@ -10,12 +10,15 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Modal from "react-bootstrap/Modal";
 import "./NavBar.css";
 import ButtonTheme from "../ButtonTheme/ButtonTheme";
+import { useContext } from "react";
+import ThemeContext from "../../Contexts/ThemeContext/ThemeContext";
 
 const NavBar = () => {
   //Modal de cerrar sesión
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const { theme, handleTheme } = useContext(ThemeContext);
   
   return (
     <div>
@@ -70,7 +73,8 @@ const NavBar = () => {
             </Dropdown>
           </Nav.Link>
         </Navbar.Collapse>
-        <Modal show={show} onHide={handleClose}>
+        <div>
+        <Modal className={theme} show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Cerrar sesión</Modal.Title>
           </Modal.Header>
@@ -84,6 +88,7 @@ const NavBar = () => {
             </Button>
           </Modal.Footer>
         </Modal>
+        </div>
       </Container>
     </Navbar>
     </div>

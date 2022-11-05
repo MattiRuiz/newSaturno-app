@@ -6,12 +6,15 @@ import Form from "react-bootstrap/Form";
 import { Image } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import ThemeContext from "../../Contexts/ThemeContext/ThemeContext";
 
 const UserConfiguration = () => {
   //Modal de profesional
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const { theme, handleTheme } = useContext(ThemeContext);
 
   const imgPerfil = require("./foto-usuario.jpg");
   return (
@@ -60,7 +63,7 @@ const UserConfiguration = () => {
                 <Col xs={8} className="mt-4 border rounded">
                   <Row className="justify-content-center py-4 align-items-center">
                     <Col xs={3}>
-                      <Image src={imgPerfil} fluid roundedCircle />
+                      <Image className={theme} src={imgPerfil} fluid roundedCircle />
                     </Col>
                     <Col xs={7}>
                       <h5>Cambiar foto de perfil</h5>
