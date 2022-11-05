@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 
 const baseUsuarios = [
   {
-    userName: "sofia12",
+    userName: "",
     nameLastname: "sofia corva",
     email: "sofia@gmail.com",
     phoneNumber: "123456",
@@ -16,14 +16,14 @@ const baseUsuarios = [
 ];
 
 const SignUp = () => {
-  const [userName, setUserName] = useState("");
-  const [nameLastname, setNameLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [ubication, setUbication] = useState("");
-  const [password, setPassword] = useState("");
-  const [validPassword, setValidPassword] = useState("");
-  const [userData, setUserData] = useState(baseUsuarios);
+  const [userName, setUserName] = useState(userName);
+  const [nameLastname, setNameLastname] = useState(nameLastname);
+  const [email, setEmail] = useState(email);
+  const [phoneNumber, setPhoneNumber] = useState(phoneNumber);
+  const [ubication, setUbication] = useState(ubication);
+  const [password, setPassword] = useState(password);
+  const [validPassword, setValidPassword] = useState(validPassword);
+  const [userData, setUserData] = useState({});
 
   const userNameHandler = (e) => {
     setUserName(e.target.value);
