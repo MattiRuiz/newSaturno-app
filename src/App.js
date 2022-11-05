@@ -20,6 +20,8 @@ import PerfilProfesional from "./Components/PerfilProfesional/PerfilProfesional"
 import PerfilUsuario from "./Components/PerfilUsuario/PerfilUsuario";
 import UserConfiguration from "./Components/UserConfiguration/UserConfiguration";
 import RecoverPassword from "./Components/RecoverPassword/RecoverPassword";
+import Admin from "./Components/Admin/Admin";
+
 import { useContext } from "react";
 import ThemeContext from "./Contexts/ThemeContext/ThemeContext";
 
@@ -113,8 +115,14 @@ function App() {
               </Container>
             }
           />
-          {/* <Route path='/professional' element={<Professional></Professional>}></Route>
-        <Route path='/cliente' element={<Client></Client>}></Route> */}
+          <Route
+            path="/admin"
+            element={
+              <Container className="text-center py-5">
+                <Admin />
+              </Container>
+            }
+          />
         </Routes>
         <Footer />
       </BrowserRouter>

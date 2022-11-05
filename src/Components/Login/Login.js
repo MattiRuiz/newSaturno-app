@@ -15,8 +15,7 @@ const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
-  const {auth, handleLogin} = useContext(LoginContext)
-
+  const { auth, handleLogin } = useContext(LoginContext);
 
   const userNameValidation = () => {
     if (userName === "") {
@@ -48,16 +47,12 @@ const Login = () => {
     }
   };
 
-   const loginHandler = () => {
-      authClient(userName, password).then(()=> {
-       console.log('login correcto')
-      }).catch((err) => {
-        console.log(err,'login incorrecto')
-      })
-    
+  const loginHandler = () => {
+    const response = authClient(userName, password);
+    console.log(response);
     setUserName("");
     setPassword("");
-   };
+  };
 
   return (
     <Container className="py-3">

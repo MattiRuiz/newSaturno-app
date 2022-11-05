@@ -16,7 +16,6 @@ const CardsProfesionales = () => {
         const response = await getProfessionals();
         if (response.status === 200) {
           setProfessional(response.data);
-          console.log(response.data);
         }
       } catch (e) {
         console.log("Catch: ", e);
@@ -42,7 +41,6 @@ const CardsProfesionales = () => {
                 to={"/perfilProfesional"}
                 onClick={storeProfessional.bind(this, item)}
               >
-                {console.log(item.id)}
                 <CardProfesionalF data={item} />
               </Link>
             </Col>

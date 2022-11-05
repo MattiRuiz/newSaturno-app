@@ -21,7 +21,7 @@ export async function authClient(userName, password) {
       url: `${baseUrl}/client/login?username=${userName}&password=${password}`,
       method: "GET",
     });
-    return response;
+    return response.status;
   } catch (errors) {
     console.log("auth: ", errors);
   }
