@@ -4,11 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const baseUsuarios = [
-  {
-  },
-];
-
+export const registerResponseData = {};
 
 const SignUp = () => {
   const [userName, setUserName] = useState(null);
@@ -18,15 +14,7 @@ const SignUp = () => {
   const [ubication, setUbication] = useState(null);
   const [password, setPassword] = useState(null);
   const [validPassword, setValidPassword] = useState(null);
-  const [userData, setUserData] = useState(usuarioDatos);
-
-  useEffect(() => {
-    const savedUser = () => {
-
-      window.localStorage.setItem("baseUsuario", JSON.stringify(userData));
-    };
-
-  }, [userName, nameLastname, email, phoneNumber, ubication, password, userData]);
+  const [userData, setUserData] = useState();
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -48,29 +36,23 @@ const SignUp = () => {
     if (id === "password") {
       setPassword(value);
     }
-
-  }
-
-  const usuarioDatos = {
-    userName: userName,
-    nameLastname: nameLastname,
-    email: email,
-    phoneNumber: phoneNumber,
-    ubication: ubication,
-    password: password,
-  };
-
-  const handleSubmit = () => {
-    console.log(userName, nameLastname, email, phoneNumber, ubication, password);
+    
   }
 
   const saveBaseUsuarioHandler = () => {
-    console.log(userData);
-    setUserData([usuarioDatos, ...baseUsuarios]);
-    window.localStorage.setItem("baseUsuario", JSON.stringify(userData));
-    console.log(userData);
+    const usuarioDatos = {
+      userName: userName,
+      nameLastname: nameLastname,
+      email: email,
+      phoneNumber: phoneNumber,
+      ubication: ubication,
+      password: password,
+    };
+    setUserData([usuarioDatos]);
+    window.localStorage.setItem("baseUsuario", JSON.stringify(usuarioDatos));
+    registerResponseData = [...usuarioDatos] 
     console.log(usuarioDatos);
-
+    
   };
 
   const cleanInputs = () => {
@@ -163,7 +145,7 @@ const SignUp = () => {
             <Button
               variant="primary"
               className="mt-4"
-              onClick={()=>handleSubmit()}
+              onClick={() => saveBaseUsuarioHandler()}
             >
               Enviar
             </Button>
@@ -180,5 +162,6 @@ const SignUp = () => {
     </Container>
   );
 };
+
 
 export default SignUp;
