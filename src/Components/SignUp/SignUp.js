@@ -1,10 +1,11 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-export const registerResponseData = {};
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 const SignUp = () => {
   const [userName, setUserName] = useState(null);
@@ -36,23 +37,35 @@ const SignUp = () => {
     if (id === "password") {
       setPassword(value);
     }
-    
+
   }
 
   const saveBaseUsuarioHandler = () => {
     const usuarioDatos = {
-      userName: userName,
-      nameLastname: nameLastname,
-      email: email,
-      phoneNumber: phoneNumber,
-      ubication: ubication,
-      password: password,
+      UserName: userName,
+      Nombre: nameLastname,
+      Email: email,
+      PhoneNumber: phoneNumber,
+      Ubication: ubication,
+      Password: password,
     };
     setUserData([usuarioDatos]);
     window.localStorage.setItem("baseUsuario", JSON.stringify(usuarioDatos));
-    registerResponseData = [...usuarioDatos] 
     console.log(usuarioDatos);
-    
+
+    try {
+      axios({
+        url: `${baseUrl}/Client`,
+        method: 'POST',
+        data: JSON.stringify(usuarioDatos),
+        headers: {
+          'Content-Type': 'application/json' // <- HERE
+        }
+      })
+    } catch (errors) {
+      console.log(errors);
+    }
+
   };
 
   const cleanInputs = () => {
