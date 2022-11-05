@@ -1,70 +1,71 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const baseUsuarios = [
-  {
-    userName: "sofia12",
-    nameLastname: "sofia corva",
-    email: "sofia@gmail.com",
-    phoneNumber: "123456",
-    ubication: "Rosario",
-    password: "1234",
-  },
-];
+const baseUrl = process.env.REACT_APP_BASE_URL;
 
 const SignUp = () => {
-  const [userName, setUserName] = useState("");
-  const [nameLastname, setNameLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [ubication, setUbication] = useState("");
-  const [password, setPassword] = useState("");
-  const [validPassword, setValidPassword] = useState("");
-  const [userData, setUserData] = useState(baseUsuarios);
+  const [userName, setUserName] = useState(null);
+  const [nameLastname, setNameLastname] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState(null);
+  const [ubication, setUbication] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [validPassword, setValidPassword] = useState(null);
+  const [userData, setUserData] = useState();
 
-  const userNameHandler = (e) => {
-    setUserName(e.target.value);
-  };
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    if (id === "userName") {
+      setUserName(value);
+    }
+    if (id === "nameLastname") {
+      setNameLastname(value);
+    }
+    if (id === "email") {
+      setEmail(value);
+    }
+    if (id === "phoneNumber") {
+      setPhoneNumber(value);
+    }
+    if (id === "ubication") {
+      setUbication(value);
+    }
+    if (id === "password") {
+      setPassword(value);
+    }
 
-  const nameLastnameHandler = (e) => {
-    setNameLastname(e.target.value);
-  };
-
-  const emailHandler = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const phoneNumberHandler = (e) => {
-    setPhoneNumber(e.target.value);
-  };
-
-  const ubicationHandler = (e) => {
-    setUbication(e.target.value);
-  };
-
-  const passwordHandler = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const validPasswordHandler = (e) => {
-    setValidPassword(e.target.value);
-  };
+  }
 
   const saveBaseUsuarioHandler = () => {
     const usuarioDatos = {
-      userName: userName,
-      nameLastname: nameLastname,
-      email: email,
-      phoneNumber: phoneNumber,
-      ubication: ubication,
-      password: password,
+      UserName: userName,
+      Nombre: nameLastname,
+      Email: email,
+      PhoneNumber: phoneNumber,
+      Ubication: ubication,
+      Password: password,
     };
-    setUserData([usuarioDatos, ...baseUsuarios]);
-    window.localStorage.setItem("baseUsuario", JSON.stringify(userData));
-    console.log(userData);
+    setUserData([usuarioDatos]);
+    window.localStorage.setItem("baseUsuario", JSON.stringify(usuarioDatos));
+    console.log(usuarioDatos);
+
+    try {
+      axios({
+        url: `${baseUrl}/Client`,
+        method: 'POST',
+        data: JSON.stringify(usuarioDatos),
+        headers: {
+          'Content-Type': 'application/json' // <- HERE
+        }
+      })
+    } catch (errors) {
+      console.log(errors);
+    }
+
   };
 
   const cleanInputs = () => {
@@ -89,7 +90,8 @@ const SignUp = () => {
               <Form.Label>Nombre de usuario:</Form.Label>
               <Form.Control
                 type="text"
-                onChange={userNameHandler}
+                id="userName"
+                onChange={(e) => handleInputChange(e)}
                 value={userName}
               />
             </Form.Group>
@@ -97,7 +99,8 @@ const SignUp = () => {
               <Form.Label>Nombre y apellido:</Form.Label>
               <Form.Control
                 type="text"
-                onChange={nameLastnameHandler}
+                id="nameLastname"
+                onChange={(e) => handleInputChange(e)}
                 value={nameLastname}
               />
             </Form.Group>
@@ -105,7 +108,8 @@ const SignUp = () => {
               <Form.Label>E-mail:</Form.Label>
               <Form.Control
                 type="email"
-                onChange={emailHandler}
+                id="email"
+                onChange={(e) => handleInputChange(e)}
                 value={email}
               />
             </Form.Group>
@@ -113,7 +117,8 @@ const SignUp = () => {
               <Form.Label>Número de celular:</Form.Label>
               <Form.Control
                 type="tel"
-                onChange={phoneNumberHandler}
+                id="phoneNumber"
+                onChange={(e) => handleInputChange(e)}
                 value={phoneNumber}
               />
             </Form.Group>
@@ -121,7 +126,8 @@ const SignUp = () => {
               <Form.Label>Ubicación:</Form.Label>
               <Form.Select
                 aria-label="select your city"
-                onChange={ubicationHandler}
+                id="ubication"
+                onChange={(e) => handleInputChange(e)}
                 value={ubication}
               >
                 <option>Elija su ciudad</option>
@@ -135,7 +141,8 @@ const SignUp = () => {
               <Form.Label>Contraseña:</Form.Label>
               <Form.Control
                 type="password"
-                onChange={passwordHandler}
+                id="password"
+                onChange={(e) => handleInputChange(e)}
                 value={password}
               />
             </Form.Group>
@@ -143,14 +150,15 @@ const SignUp = () => {
               <Form.Label>Repita la contraseña:</Form.Label>
               <Form.Control
                 type="password"
-                onChange={validPasswordHandler}
+                id="passwordValidation"
+                onChange={(e) => handleInputChange(e)}
                 value={validPassword}
               />
             </Form.Group>
             <Button
               variant="primary"
               className="mt-4"
-              onClick={saveBaseUsuarioHandler}
+              onClick={() => saveBaseUsuarioHandler()}
             >
               Enviar
             </Button>
@@ -167,5 +175,6 @@ const SignUp = () => {
     </Container>
   );
 };
+
 
 export default SignUp;
