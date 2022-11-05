@@ -17,9 +17,12 @@ import { BiMap, BiMobileAlt } from "react-icons/bi";
 import { BsCalendarEvent } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import ThemeContext from "../../Contexts/ThemeContext/ThemeContext";
 
 const PerfilProfesional = () => {
   const [professional, setProfessional] = useState([]);
+  const { theme, handleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     const IDProfesional = localStorage.getItem("prof");
@@ -49,17 +52,34 @@ const PerfilProfesional = () => {
 
   const current = new Date();
 
+  const estilo = {
+    "background-image": "url(" + professional.fotoPortada + ")",
+  };
+
   return (
     <>
       <Container>
         <Row className="justify-content-center">
           <Col xs={11} className="border rounded">
-            <Row>
-              <Col xs={12} className="img-portada rounded-top"></Col>
-            </Row>
+            <div className={theme}>
+              <Row>
+                <Col
+                  xs={12}
+                  className="img-portada rounded-top"
+                  style={estilo}
+                ></Col>
+              </Row>
+            </div>
             <Row className="justify-content-center pt-3 pb-5">
               <Col xs={3}>
-                <Image src={fotoPerfil} roundedCircle fluid className="mb-3" />
+                <div className={theme}>
+                  <Image
+                    src={professional.fotoPerfil}
+                    roundedCircle
+                    fluid
+                    className="mb-3"
+                  />
+                </div>
                 <p className="mb-1 ms-3 text-start">
                   <BiMap /> <strong>{professional.direccion}</strong> -{" "}
                   {professional.ubicacion}

@@ -13,11 +13,7 @@ const CardProfesional = ({ data }) => {
   return (
     <>
       <Card key={data.Id}>
-        <Card.Img
-          className={theme}
-          variant="top"
-          src="https://picsum.photos/300/200"
-        />
+        <Card.Img className={theme} variant="top" src={data.fotoPerfil} />
         <Card.Body>
           <Card.Title>{data.nombre} </Card.Title>
           <Card.Subtitle className="text-muted mb-2">
