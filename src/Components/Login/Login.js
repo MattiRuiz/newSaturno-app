@@ -48,8 +48,17 @@ const Login = () => {
   };
 
   const loginHandler = () => {
-    const response = authClient(userName, password);
-    console.log(response);
+    authClient(userName, password).then(function (response) {
+      if (response.status === 204) {
+        console.log("Usuario inválido");
+      } else if (response.status === 200) {
+        navigate("/");
+        console.log(response.data);
+        localStorage.setItem("user", JSON.stringify(response.data));
+      } else {
+        console.log("no funcó");
+      }
+    });
     setUserName("");
     setPassword("");
   };

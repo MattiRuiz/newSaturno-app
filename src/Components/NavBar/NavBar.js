@@ -22,7 +22,12 @@ const NavBar = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-const { theme, handleTheme } = useContext(ThemeContext);
+
+  const loginHandler = () => {
+    localStorage.removeItem("user");
+  };
+
+  const { theme, handleTheme } = useContext(ThemeContext);
   return (
     <Navbar bg="white" expand="lg" className="navBar index1">
       <Container>
@@ -40,7 +45,7 @@ const { theme, handleTheme } = useContext(ThemeContext);
           id="basic-navbar-nav"
           className="justify-content-end text-center"
         >
-	<ButtonTheme/>
+          <ButtonTheme />
           <Nav.Link className="navBar-options mt-3 mt-lg-0">
             <Link to={"/buscar"}>Buscar</Link>
           </Nav.Link>
@@ -89,7 +94,7 @@ const { theme, handleTheme } = useContext(ThemeContext);
             <Button variant="secondary" onClick={handleClose}>
               Volver
             </Button>
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant="primary" onClick={loginHandler}>
               Cerrar sesión
             </Button>
           </Modal.Footer>

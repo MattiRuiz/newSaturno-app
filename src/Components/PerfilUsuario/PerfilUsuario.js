@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Col, Container, Row } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
@@ -9,7 +9,15 @@ import ThemeContext from "../../Contexts/ThemeContext/ThemeContext";
 
 const PerfilUsuario = () => {
   const fotoUsuario = require("./foto-usuario.jpg");
-const { theme, handleTheme } = useContext(ThemeContext);
+  const [userLogged, setUserLogged] = useState({});
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    setUserLogged(user);
+  }, []);
+
+  console.log(userLogged);
+  const { theme, handleTheme } = useContext(ThemeContext);
   return (
     <>
       <Container>
@@ -17,11 +25,17 @@ const { theme, handleTheme } = useContext(ThemeContext);
           <Col xs={11} className="border rounded py-4">
             <Row className="justify-content-center align-items-center pt-3">
               <Col xs={3}>
-                <Image className={theme} src={fotoUsuario} alt="" roundedCircle fluid />
+                <Image
+                  className={theme}
+                  src={fotoUsuario}
+                  alt=""
+                  roundedCircle
+                  fluid
+                />
               </Col>
               <Col xs={7}>
-                <h1>Mariano del Rio</h1>
-                <h5 className="fw-light">Rosario - Santa Fe</h5>
+                <h1>{userLogged.nombre}</h1>
+                <h5 className="fw-light">{userLogged.ubication}</h5>
               </Col>
               <Col xs={10} className="border-bottom mt-5">
                 <h6>Tus turnos</h6>
