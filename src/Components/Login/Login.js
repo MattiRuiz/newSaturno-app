@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import "./Login.css";
 
@@ -7,14 +7,16 @@ import { Col, Container, Row } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 
 import { useNavigate, Link } from "react-router-dom";
-
 import { authClient } from "../../functions/clientMethods";
+import LoginContext from "../../Contexts/ThemeContext/LoginContext";
 
 const Login = () => {
   const navigate = useNavigate(); // Allows us to redirect
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
+  const {auth, handleLogin} = useContext(LoginContext)
+
 
   const userNameValidation = () => {
     if (userName === "") {
@@ -46,20 +48,16 @@ const Login = () => {
     }
   };
 
-  const loginHandler = () => {
-    authClient(userName, password);
-    // .then(() => {
-    //   window.localStorage.setItem("current_user", JSON.stringify(userName)); // Saving the current session
-    //   navigate("/"); // Redirect
-    //   console.log("Successful login, user: " + userName);
-    // })
-    // .catch((err) => {
-    //   alert(err);
-    // });
-
+   const loginHandler = () => {
+      authClient(userName, password).then(()=> {
+       console.log('login correcto')
+      }).catch((err) => {
+        console.log(err,'login incorrecto')
+      })
+    
     setUserName("");
     setPassword("");
-  };
+   };
 
   return (
     <Container className="py-3">

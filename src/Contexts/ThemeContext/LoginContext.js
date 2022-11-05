@@ -1,19 +1,21 @@
 import React from "react";
 import { createContext, useState } from "react";
+import { authClient } from "../../functions/clientMethods";
 
 const LoginContext = createContext();
 
 const LoginProvider = ({children}) => {
+    const [auth, setAuth] = useState(null);
     
-
-    const handleTheme = () => {
+    const handleLogin = () => {
       
     }
-                
+        
+    const data = {auth, handleLogin};
       return (
         <LoginContext.Provider value={data} >{children}</LoginContext.Provider>
         );
     };
     
-    export { ThemeProvider };
-    export default ThemeContext;
+    export { LoginProvider };
+    export default LoginContext;

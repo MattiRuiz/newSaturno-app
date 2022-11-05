@@ -17,9 +17,11 @@ export async function getClient() {
 
 export async function authClient(userName, password) {
   try {
-    const clientList = getClient();
-    console.log(clientList);
-    console.log(userName, password);
+    const response = await axios({
+      url: `${baseUrl}/client/login?username=${userName}&password=${password}`,
+      method: "GET",
+    });
+    return response;
   } catch (errors) {
     console.log("auth: ", errors);
   }
