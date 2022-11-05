@@ -76,6 +76,9 @@ const NavBar = () => {
                   <Link to={"/perfilUsuario"}>Mi cuenta</Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
+                  <Link to={"/admin"}>Admin</Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
                   <Link to={"/configuracionUsuario"}>Configuraciones</Link>
                 </Dropdown.Item>
                 <Dropdown.Item onClick={handleShow}>

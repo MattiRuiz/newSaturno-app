@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Col, Container, Row } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
+
 import Table from "react-bootstrap/Table";
+import FilaTabla from "./FilaTabla";
+
+import { getClient } from "../../functions/clientMethods";
 
 const Admin = () => {
+  const [clients, setClients] = useState([]);
+
+  useEffect(() => {
+    getClient().then(function (response) {
+      setClients(response.data);
+    });
+  }, []);
+
+  console.log(clients);
   return (
     <Container>
       <Row className="justify-content-center text-start">
@@ -21,50 +33,9 @@ const Admin = () => {
                 <th>Name</th>
                 <th>Edit/Delete</th>
               </tr>
-              <tr>
-                <td>1</td>
-                <td>FacuCapoBoca</td>
-                <td>Facundo Romano</td>
-                <td>
-                  <Button variant="danger">x</Button>
-                  <Button variant="success" className="ms-1">
-                    e
-                  </Button>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>MatiOtroCapo</td>
-                <td>Matias Ruiz</td>
-                <td>
-                  <Button variant="danger">x</Button>
-                  <Button variant="success" className="ms-1">
-                    e
-                  </Button>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>LisaJR</td>
-                <td>Sofia Corvalan</td>
-                <td>
-                  <Button variant="danger">x</Button>
-                  <Button variant="success" className="ms-1">
-                    e
-                  </Button>
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>ElEloAelo</td>
-                <td>Aelohim Specciale</td>
-                <td>
-                  <Button variant="danger">x</Button>
-                  <Button variant="success" className="ms-1">
-                    e
-                  </Button>
-                </td>
-              </tr>
+              {clients.map((user) => (
+                <FilaTabla user={user} setClients={setClients} />
+              ))}
             </thead>
           </Table>
         </Col>
