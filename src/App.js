@@ -2,13 +2,12 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 
 //import Professional from './Components/Professional';
 import Home from "./Components/Home/Home";
 import Footer from "./Components/Footer/Footer";
-import NavBar from "./Components/NavBar/NavBar";
 import Login from "./Components/Login/Login";
 import Search from "./Components/Search/Search";
 import Contact from "./Components/Contact/Contact";
@@ -33,24 +32,37 @@ import NavBarLogged from "./Components/NavBar/NavBarLogged";
 function App() {
   const { theme, handleTheme } = useContext(ThemeContext);
   const { auth, handleLogin } = useContext(LoginContext);
+  const [navBarRender, setNavBarRender] = useState(<NavBarLogged />);
 
   useEffect(() => {
     const getUser = () => {
-      const user = localStorage.getItem('user')
-      if(user) {
-        handleLogin(JSON.parse(user))
+      const user = localStorage.getItem("user");
+      if (user) {
+        handleLogin(JSON.parse(user));
       } else {
-        console.log('Usuario no registrado')
+        console.log("Usuario no registrado");
       }
-    }
+    };
     getUser();
-  },[]);
+  }, []);
+
+  useEffect(() => {
+    const authChecker = () => {
+      if (auth) {
+        setNavBarRender(<NavBarLogged />);
+        console.log("rendered: ", auth);
+      } else {
+        setNavBarRender(<NavBarLogOut />);
+        console.log("not rendered: ", auth);
+      }
+    };
+    authChecker();
+  }, [auth]);
 
   return (
     <div className={theme}>
       <BrowserRouter>
-        {auth && <NavBarLogged/>}
-        {!auth && <NavBarLogOut/>}
+        {navBarRender}
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route
@@ -61,7 +73,7 @@ function App() {
               </Container>
             }
           />
-            <Route
+          <Route
             path="/profesionales"
             element={
               <Container className="text-center py-5">

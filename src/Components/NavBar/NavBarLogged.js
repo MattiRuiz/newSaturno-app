@@ -23,8 +23,10 @@ const NavBarLogged = () => {
   const navigate = useNavigate();
   const { auth, handleLogin } = useContext(LoginContext);
 
-  const loginHandler = () => {
+  const logoutHandler = () => {
     localStorage.removeItem("user");
+    handleClose();
+    handleLogin(false);
     navigate("/");
   };
 
@@ -47,9 +49,11 @@ const NavBarLogged = () => {
           className="justify-content-end text-center"
         >
           <ButtonTheme />
-          {/* <Nav.Link className="navBar-options mt-3 mt-lg-0">
-            <Link to={"/buscar"}>Buscar</Link>
-          </Nav.Link> */}
+          <Nav.Link className="navBar-options mt-3 mt-lg-0">
+            <Link to={"/home"} className="colorLink">
+              Home
+            </Link>
+          </Nav.Link>
           <Nav.Link className="navBar-options mt-3 mt-lg-0">
             <Link to={"/profesionales"}>Qué es Saturno</Link>
           </Nav.Link>
@@ -60,20 +64,12 @@ const NavBarLogged = () => {
             <Link to={"/sobrenosotros"}>Sobre nosotros</Link>
           </Nav.Link>
           <Nav.Link className="my-3 my-lg-0">
-            {/* <Link to={"/login"}>
-              <Button color="primary">
-                <FaRegUser /> Login
-              </Button>
-            </Link> */}
             <Dropdown as={ButtonGroup}>
               <Button variant="primary" as={Link} to={"/perfilUsuario"}>
-                <FaRegUser /> {auth.username}
+                <FaRegUser /> Mi cuenta
               </Button>
               <Dropdown.Toggle split variant="primary" id="dropdown-user" />
               <Dropdown.Menu>
-                {/* <Dropdown.Item as={Link} to={"/perfilUsuario"}>
-                  Mi cuenta
-                </Dropdown.Item> */}
                 <Dropdown.Item as={Link} to={"/admin"}>
                   Admin
                 </Dropdown.Item>
@@ -96,7 +92,7 @@ const NavBarLogged = () => {
             <Button variant="secondary" onClick={handleClose}>
               Volver
             </Button>
-            <Button variant="primary" onClick={loginHandler}>
+            <Button variant="primary" onClick={logoutHandler}>
               Cerrar sesión
             </Button>
           </Modal.Footer>

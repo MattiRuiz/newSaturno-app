@@ -7,12 +7,8 @@ const LoginProvider = ({ children }) => {
   const [auth, setAuth] = useState();
 
   const handleLogin = (user) => {
-    if (user) {
-      console.log(user, 'la puta q te pario')
-      setAuth(user);
-    }
+    setAuth(user);
   };
-  console.log(auth, 'auth');
 
   const data = { auth, handleLogin };
   return <LoginContext.Provider value={data}>{children}</LoginContext.Provider>;

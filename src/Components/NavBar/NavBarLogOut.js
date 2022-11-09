@@ -24,7 +24,7 @@ const NavBarLogOut = () => {
 
   const loginHandler = () => {
     localStorage.removeItem("user");
-    navigate('/')
+    navigate("/");
   };
 
   const { theme, handleTheme } = useContext(ThemeContext);
@@ -32,7 +32,7 @@ const NavBarLogOut = () => {
     <Navbar bg="white" expand="lg" className="navBar index1">
       <Container>
         <Navbar.Brand>
-          <Link to={"/home"}>
+          <Link to={"/"}>
             <img
               className="logoApp"
               alt="logoApp"
@@ -46,9 +46,7 @@ const NavBarLogOut = () => {
           className="justify-content-end text-center"
         >
           <ButtonTheme />
-          {/* <Nav.Link className="navBar-options mt-3 mt-lg-0">
-            <Link to={"/buscar"}>Buscar</Link>
-          </Nav.Link> */}
+
           <Nav.Link className="navBar-options mt-3 mt-lg-0">
             <Link to={"/profesionales"}>Qué es Saturno</Link>
           </Nav.Link>
@@ -59,34 +57,9 @@ const NavBarLogOut = () => {
             <Link to={"/sobrenosotros"}>Sobre nosotros</Link>
           </Nav.Link>
           <Nav.Link className="my-3 my-lg-0">
-            {/* <Link to={"/login"}>
-              <Button color="primary">
-                <FaRegUser /> Login
-              </Button>
-            </Link> */}
-             <Button variant="primary" as={Link} to={"/"}>
-                <FaRegUser /> Login
-              </Button>
-            {/* <Dropdown as={ButtonGroup}>
-              <Button variant="primary" as={Link} to={"/"}>
-                <FaRegUser /> Login
-              </Button>
-              <Dropdown.Toggle split variant="primary" id="dropdown-user" />
-              <Dropdown.Menu>
-                <Dropdown.Item as={Link} to={"/perfilUsuario"}>
-                  Mi cuenta
-                </Dropdown.Item>
-                <Dropdown.Item as={Link} to={"/admin"}>
-                  Admin
-                </Dropdown.Item>
-                <Dropdown.Item as={Link} to={"/configuracionUsuario"}>
-                  Configuraciones
-                </Dropdown.Item>
-                <Dropdown.Item onClick={handleShow}>
-                  Cerrar sesión
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown> */}
+            <Button variant="primary" as={Link} to={"/"}>
+              <FaRegUser /> Login
+            </Button>
           </Nav.Link>
         </Navbar.Collapse>
         <Modal className={theme} show={show} onHide={handleClose}>
