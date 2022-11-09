@@ -1,29 +1,40 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { Button } from "react-bootstrap";
 import { FaRegMoon, FaSun } from "react-icons/fa";
 import ThemeContext from "../../Contexts/ThemeContext/ThemeContext";
 
 const ButtonTheme = () => {
   const { theme, handleTheme } = useContext(ThemeContext);
+  const buttonLight = useRef(null);
+  const buttonDark = useRef(null);
+
+  useEffect(() => {
+    const themeButton = () => {
+      if (theme === "light") {
+        buttonLight.current.className = "d-none";
+        buttonDark.current.className = "d-inline-block btn btn-secondary mx-3";
+      } else {
+        buttonDark.current.className = "d-none";
+        buttonLight.current.className = "d-inline-block btn btn-primary mx-3";
+      }
+    };
+    themeButton();
+  }, [theme]);
 
   return (
     <div>
       <Button
-        onClick={handleTheme}
+        onClick={handleTheme.bind(this, "light")}
         variant="primary"
-        className="me-2"
-        name="theme"
-        id="light"
-        value="light"
+        className="mx-2"
+        ref={buttonLight}
       >
         <FaSun className="me-0" />
       </Button>
       <Button
-        onClick={handleTheme}
+        onClick={handleTheme.bind(this, "dark")}
         variant="secondary"
-        name="theme"
-        id="dark"
-        value="dark"
+        ref={buttonDark}
       >
         <FaRegMoon className="me-0" />
       </Button>

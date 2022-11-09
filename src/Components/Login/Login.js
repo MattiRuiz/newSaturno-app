@@ -55,6 +55,7 @@ const Login = () => {
         navigate("/");
         console.log(response.data);
         localStorage.setItem("user", JSON.stringify(response.data));
+        handleLogin(response.data);
       } else {
         console.log("no funcó");
       }
@@ -102,17 +103,17 @@ const Login = () => {
             </Button>
           </Form>
           <p className="mb-1">
-            <b>¿Olvidaste tu contraseña?</b> Has click{" "}
+            <b>¿Olvidaste tu contraseña?</b> Hacé click{" "}
             <Link to={"/recoverPassword"} className="colorLink">
-              acá
+              acá!
             </Link>
           </p>
           <p>
-            <b>¿No tenes cuenta?</b> Has click{" "}
+            <b>¿No tenés cuenta?</b> Hacé click{" "}
             <Link to={"/signup"} className="colorLink">
               acá
             </Link>{" "}
-            para registrarte
+            para registrarte.
           </p>
         </Col>
       </Row>

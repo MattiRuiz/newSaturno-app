@@ -32,7 +32,7 @@ const NavBar = () => {
     <Navbar bg="white" expand="lg" className="navBar index1">
       <Container>
         <Navbar.Brand>
-          <Link to={"/"}>
+          <Link to={"/home"}>
             <img
               className="logoApp"
               alt="logoApp"
@@ -46,11 +46,11 @@ const NavBar = () => {
           className="justify-content-end text-center"
         >
           <ButtonTheme />
-          <Nav.Link className="navBar-options mt-3 mt-lg-0">
+          {/* <Nav.Link className="navBar-options mt-3 mt-lg-0">
             <Link to={"/buscar"}>Buscar</Link>
-          </Nav.Link>
+          </Nav.Link> */}
           <Nav.Link className="navBar-options mt-3 mt-lg-0">
-            <Link to={"/profesionales"}>Profesionales</Link>
+            <Link to={"/profesionales"}>Qué es Saturno</Link>
           </Nav.Link>
           <Nav.Link className="navBar-options mt-3 mt-lg-0">
             <Link to={"/contacto"}>Contacto</Link>
@@ -65,21 +65,19 @@ const NavBar = () => {
               </Button>
             </Link> */}
             <Dropdown as={ButtonGroup}>
-              <Button variant="primary">
-                <Link to={"/login"} className="text-white">
-                  <FaRegUser /> Login
-                </Link>
+              <Button variant="primary" as={Link} to={"/"}>
+                <FaRegUser /> Login
               </Button>
               <Dropdown.Toggle split variant="primary" id="dropdown-user" />
               <Dropdown.Menu>
-                <Dropdown.Item>
-                  <Link to={"/perfilUsuario"}>Mi cuenta</Link>
+                <Dropdown.Item as={Link} to={"/perfilUsuario"}>
+                  Mi cuenta
                 </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link to={"/admin"}>Admin</Link>
+                <Dropdown.Item as={Link} to={"/admin"}>
+                  Admin
                 </Dropdown.Item>
-                <Dropdown.Item>
-                  <Link to={"/configuracionUsuario"}>Configuraciones</Link>
+                <Dropdown.Item as={Link} to={"/configuracionUsuario"}>
+                  Configuraciones
                 </Dropdown.Item>
                 <Dropdown.Item onClick={handleShow}>
                   Cerrar sesión

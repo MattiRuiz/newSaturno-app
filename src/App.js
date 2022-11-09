@@ -23,6 +23,7 @@ import Admin from "./Components/Admin/Admin";
 
 import { useContext } from "react";
 import ThemeContext from "./Contexts/ThemeContext/ThemeContext";
+import Error404 from "./Components/Error404/Error404";
 
 // 1) export NODE_OPTIONS=--openssl-legacy-provider 2) npm start
 
@@ -33,7 +34,7 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route
             path="/buscar"
             element={
@@ -67,7 +68,7 @@ function App() {
             }
           />
           <Route
-            path="/login"
+            path="/"
             element={
               <Container className="text-center py-5">
                 <Login />
@@ -119,6 +120,14 @@ function App() {
             element={
               <Container className="text-center py-5">
                 <Admin />
+              </Container>
+            }
+          />
+          <Route
+            path="/*"
+            element={
+              <Container className="text-center py-5">
+                <Error404 />
               </Container>
             }
           />

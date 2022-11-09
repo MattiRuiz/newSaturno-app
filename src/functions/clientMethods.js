@@ -33,7 +33,7 @@ export async function DeleteClient(id) {
     const response = await axios({
       headers: {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "Access-Control-Allow-Methods": "DELETE",
       },
       url: `${baseUrl}/client/${id}`,
       method: "DELETE",
