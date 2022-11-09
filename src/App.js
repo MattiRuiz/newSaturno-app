@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 
 //import Professional from './Components/Professional';
@@ -21,18 +21,36 @@ import UserConfiguration from "./Components/UserConfiguration/UserConfiguration"
 import RecoverPassword from "./Components/RecoverPassword/RecoverPassword";
 import Admin from "./Components/Admin/Admin";
 
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import ThemeContext from "./Contexts/ThemeContext/ThemeContext";
 import Error404 from "./Components/Error404/Error404";
+import LoginContext from "./Contexts/ThemeContext/LoginContext";
+import NavBarLogOut from "./Components/NavBar/NavBarLogOut";
+import NavBarLogged from "./Components/NavBar/NavBarLogged";
 
 // 1) export NODE_OPTIONS=--openssl-legacy-provider 2) npm start
 
 function App() {
   const { theme, handleTheme } = useContext(ThemeContext);
+  const { auth, handleLogin } = useContext(LoginContext);
+
+  useEffect(() => {
+    const getUser = () => {
+      const user = localStorage.getItem('user')
+      if(user) {
+        handleLogin(JSON.parse(user))
+      } else {
+        console.log('Usuario no registrado')
+      }
+    }
+    getUser();
+  },[]);
+
   return (
     <div className={theme}>
       <BrowserRouter>
-        <NavBar />
+        {auth && <NavBarLogged/>}
+        {!auth && <NavBarLogOut/>}
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route
@@ -43,7 +61,7 @@ function App() {
               </Container>
             }
           />
-          <Route
+            <Route
             path="/profesionales"
             element={
               <Container className="text-center py-5">

@@ -50,14 +50,15 @@ const Login = () => {
   const loginHandler = () => {
     authClient(userName, password).then(function (response) {
       if (response.status === 204) {
-        console.log("Usuario inválido");
+        alert('Usuario no registrado')
+        handleLogin(null);
       } else if (response.status === 200) {
-        navigate("/");
+        navigate("/home");
         console.log(response.data);
         localStorage.setItem("user", JSON.stringify(response.data));
         handleLogin(response.data);
       } else {
-        console.log("no funcó");
+        alert('Usuario inválido')
       }
     });
     setUserName("");
