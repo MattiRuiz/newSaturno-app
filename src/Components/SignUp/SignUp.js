@@ -1,22 +1,10 @@
-import axios from "axios";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const baseUrl = process.env.REACT_APP_BASE_URL;
-
-const baseUsuarios = [
-  {
-    userName: "sofia12",
-    nameLastname: "sofia corva",
-    email: "sofia@gmail.com",
-    phoneNumber: "123456",
-    ubication: "Rosario",
-    password: "1234",
-  },
-];
+import { RegisterClient } from "../../functions/clientMethods";
 
 const SignUp = () => {
   const [userName, setUserName] = useState("");
@@ -26,7 +14,7 @@ const SignUp = () => {
   const [ubication, setUbication] = useState("");
   const [password, setPassword] = useState("");
   const [validPassword, setValidPassword] = useState("");
-  const [userData, setUserData] = useState(baseUsuarios);
+  //const [userData, setUserData] = useState();
   const [errors, setErrors] = useState({});
   const [errorsValidation, setErrorsValidation] = useState("");
   const inputUserName = useRef(null);
@@ -78,19 +66,6 @@ const SignUp = () => {
   const emailHandler = (e) => {
     setEmail(e.target.value);
   };
-
-  // try {
-  //   axios({
-  //     url: `${baseUrl}/Client`,
-  //     method: "POST",
-  //     data: JSON.stringify(usuarioDatos),
-  //     headers: {
-  //       "Content-Type": "application/json", // <- HERE
-  //     },
-  //   });
-  // } catch (errors) {
-  //   console.log(errors);
-  // }
 
   const emailValidation = () => {
     const validEmail = "@";
@@ -172,11 +147,11 @@ const SignUp = () => {
   const saveBaseUsuarioHandler = () => {
     const usuarioDatos = {
       userName: userName,
-      nameLastname: nameLastname,
       email: email,
+      nombre: nameLastname,
+      password: password,
       phoneNumber: phoneNumber,
       ubication: ubication,
-      password: password,
     };
 
     if (
@@ -189,10 +164,12 @@ const SignUp = () => {
       password &&
       validPassword
     ) {
-      setUserData([usuarioDatos, ...baseUsuarios]);
+      //ACÁ VA EL REGISTRO DE USUARIO
+
       cleanInputs();
-      window.localStorage.setItem("baseUsuario", JSON.stringify(userData));
-      console.log(userData);
+      //window.localStorage.setItem("user", JSON.stringify(userData));
+      console.log(usuarioDatos);
+      RegisterClient(usuarioDatos);
       setErrorsValidation("");
     } else {
       if (errors.userName) {

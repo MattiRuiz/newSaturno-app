@@ -43,3 +43,21 @@ export async function DeleteClient(id) {
     console.log("auth: ", errors);
   }
 }
+
+export async function RegisterClient(client) {
+  console.log("Register client ", client);
+  try {
+    axios({
+      url: `${baseUrl}/Client`,
+      method: "POST",
+      data: JSON.stringify(client),
+      headers: {
+        "Content-Type": "application/json", // <- HERE
+      },
+    });
+    const listUser = getClient();
+    console.log(listUser);
+  } catch (errors) {
+    console.log(errors);
+  }
+}

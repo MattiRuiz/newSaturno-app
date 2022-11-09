@@ -16,7 +16,6 @@ const PerfilUsuario = () => {
     setUserLogged(user);
   }, []);
 
-  console.log(userLogged);
   const { theme, handleTheme } = useContext(ThemeContext);
   return (
     <>
