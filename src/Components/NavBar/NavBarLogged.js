@@ -64,7 +64,7 @@ const NavBarLogged = () => {
             <Link to={"/sobrenosotros"}>Sobre nosotros</Link>
           </Nav.Link>
           <Nav.Link className="my-3 my-lg-0">
-            <Dropdown as={ButtonGroup}>
+            <Dropdown as={ButtonGroup} className="index9999">
               <Button variant="primary" as={Link} to={"/perfilUsuario"}>
                 <FaRegUser /> Mi cuenta
               </Button>

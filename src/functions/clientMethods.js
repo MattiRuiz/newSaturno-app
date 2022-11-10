@@ -61,3 +61,19 @@ export async function RegisterClient(client) {
     console.log(errors);
   }
 }
+
+export async function editClient(id, data) {
+  console.log("edit: ", id, JSON.stringify(data));
+  try {
+    axios({
+      url: `${baseUrl}/Client/${id}`,
+      method: "PUT",
+      data: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json", // <- HERE
+      },
+    });
+  } catch (errors) {
+    console.log("auth: ", errors);
+  }
+}

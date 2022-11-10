@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router";
 
 import { RegisterClient } from "../../functions/clientMethods";
 
@@ -24,6 +25,8 @@ const SignUp = () => {
   const inputUbication = useRef(null);
   const inputPassword = useRef(null);
   const inputValidPassword = useRef(null);
+
+  const navigate = useNavigate();
 
   const userNameHandler = (e) => {
     setUserName(e.target.value);
@@ -170,6 +173,7 @@ const SignUp = () => {
       //window.localStorage.setItem("user", JSON.stringify(userData));
       console.log(usuarioDatos);
       RegisterClient(usuarioDatos);
+      navigate("/");
       setErrorsValidation("");
     } else {
       if (errors.userName) {

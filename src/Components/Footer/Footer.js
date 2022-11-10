@@ -7,8 +7,8 @@ const Footer = () => {
   return (
     <Container fluid className="footer">
       <p>
-        Inserte el contenido de un footer aquí. Todos los derechos reservados al
-        Grupo 4 ©
+        Saturno App y todos sus derivados son propiedad única y exclusiva del{" "}
+        <strong>Grupo 4©</strong>
       </p>
     </Container>
   );

@@ -26,15 +26,12 @@ const PerfilProfesional = () => {
 
   useEffect(() => {
     const IDProfesional = localStorage.getItem("prof");
-    console.log(IDProfesional);
     async function loadProfessional() {
-      console.log("dentro del useEffect");
       try {
         const response = await IDGetProfesional(IDProfesional);
         if (response.status === 200) {
           const [destructuringProfessional] = response.data;
           setProfessional(destructuringProfessional);
-          console.log(destructuringProfessional);
         }
       } catch (e) {
         console.log("Catch: ", e);

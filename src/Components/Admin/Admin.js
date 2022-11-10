@@ -31,7 +31,7 @@ const Admin = () => {
                 <th>ID</th>
                 <th>User</th>
                 <th>Name</th>
-                <th>Edit/Delete</th>
+                <th>Delete/Edit</th>
               </tr>
               {clients.map((user) => (
                 <FilaTabla user={user} setClients={setClients} />

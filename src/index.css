@@ -39,7 +39,11 @@ a.colorLink {
 }
 
 .index1 {
-  z-index: 1;
+  z-index: 1 !important;
+}
+
+.index9999 {
+  z-index: 9999 !important;
 }
 
 .container {
