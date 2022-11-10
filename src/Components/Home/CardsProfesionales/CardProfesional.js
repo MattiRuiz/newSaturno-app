@@ -1,5 +1,5 @@
 import React from "react";
-import { useContext }from "react";
+import { useContext } from "react";
 import "./CardProfesional.css";
 
 import Card from "react-bootstrap/Card";
@@ -9,7 +9,7 @@ import ThemeContext from "../../../Contexts/ThemeContext/ThemeContext";
 
 const CardProfesional = () => {
   const cardImg = require("./smart-fit.jpg");
-  const {theme, handleTheme} = useContext(ThemeContext);
+  const { theme, handleTheme } = useContext(ThemeContext);
   return (
     <>
       <Card>
